@@ -6,22 +6,31 @@
 
 </head>
 <body>
-<img src="/demo/check" id="checkCode">
-<a href="#" id="change">看不清？换一张</a>
+<img src="/demo/check" id="checkCode" onclick="func()">
+<a href="#" id="change" onclick="a()">看不清？换一张</a>
 </body>
 <script>
     window.onload = function () {
         func()
     }
 
-    func()
 
     function func() {
         let img = document.getElementById("checkCode");
         img.onclick = function () {
             let time = new Date().getTime();
-            img.src = "/demo/check" + time;
+            img.src = "/demo/check?" + time;
         }
     }
+
+    function a() {
+        let img = document.getElementById("checkCode");
+        let a = document.getElementById("change");
+        a.onclick = function () {
+            let time = new Date().getTime();
+            img.src = "/demo/check?" + time;
+        }
+    }
+
 </script>
 </html>
