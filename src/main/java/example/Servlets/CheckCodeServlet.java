@@ -47,10 +47,6 @@ public class CheckCodeServlet extends HttpServlet {
             g.drawLine(x1,y1,x2,y2);
         }
 
-        g.drawString("A", 20, 25);
-        g.drawString("A", 40, 35);
-        g.drawString("A", 60, 40);
-        g.drawString("A", 80, 12);
         // 输出图片
         ImageIO.write(image, "jpg", response.getOutputStream());
     }

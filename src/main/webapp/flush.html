@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>刷新验证码</title>
+
+</head>
+<body>
+<img src="/demo/check" id="checkCode">
+<a href="#" id="change">看不清？换一张</a>
+</body>
+<script>
+    window.onload = function () {
+        func()
+    }
+
+    func()
+
+    function func() {
+        let img = document.getElementById("checkCode");
+        img.onclick = function () {
+            let time = new Date().getTime();
+            img.src = "/demo/check" + time;
+        }
+    }
+</script>
+</html>
