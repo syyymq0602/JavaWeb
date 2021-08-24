@@ -27,6 +27,7 @@ public class UserDao {
                     loginUser.getPassword());
             return user;
         }catch (DataAccessException e){
+            System.out.println("------------------------");
             e.printStackTrace();
             return null;
         }

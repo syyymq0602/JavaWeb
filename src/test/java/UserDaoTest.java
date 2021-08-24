@@ -8,7 +8,7 @@ public class UserDaoTest {
     public void testLogin(){
         User loginUser = new User();
         loginUser.setUsername("lisi");
-        loginUser.setPassword("12311");
+        loginUser.setPassword("123");
 
         UserDao dao = new UserDao();
         User user = dao.login(loginUser);
