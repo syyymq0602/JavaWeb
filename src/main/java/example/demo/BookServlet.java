@@ -7,9 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
 import java.util.Enumeration;
 
-@WebServlet(urlPatterns = {"/q","/qq","/qqq"})
+@WebServlet(urlPatterns = {"/books"})
 public class BookServlet extends HttpServlet {
     private String message;
 
@@ -33,7 +34,7 @@ public class BookServlet extends HttpServlet {
             out.println("</body></html>");
         }
 
-        req.getRequestDispatcher("/hello-servlet").forward(req,resp);
+//        req.getRequestDispatcher("/hello-servlet").forward(req,resp);
     }
 
     public void destroy() {
