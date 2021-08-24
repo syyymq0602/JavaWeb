@@ -1,5 +1,7 @@
 package example.Servlets;
 
+import example.domain.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,13 +15,13 @@ public class SuccessServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
 
-        Object username = request.getAttribute("username");
+        User user = (User) request.getAttribute("user");
 
-        response.getWriter().write("登录成功！"+ username+"欢迎你！");
+        response.getWriter().write("登录成功！" + user.getUsername() + "欢迎你！");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doGet(request,response);
+        this.doGet(request, response);
     }
 }
