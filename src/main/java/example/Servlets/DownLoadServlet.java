@@ -10,6 +10,7 @@ import java.io.IOException;
 
 @WebServlet(name = "DownLoadServlet", value = "/down")
 public class DownLoadServlet extends HttpServlet {
+    private ServletOutputStream sos;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.doPost(request, response);
@@ -31,12 +32,22 @@ public class DownLoadServlet extends HttpServlet {
         filename = DownLoadUtils.getFileName(agent, filename);
         response.setHeader("content-disposition", "attachment;filename=" + filename);
         // 输入流输出到输出流中
-        ServletOutputStream sos = response.getOutputStream();
+        sos = response.getOutputStream();
         byte[] buff = new byte[1024 * 8];
         int len = 0;
         while ((len = fis.read(buff)) != -1) {
             sos.write(buff, 0, len);
         }
+        fis.close();
 
+    }
+
+    @Override
+    public void destroy() {
+        try {
+            sos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
