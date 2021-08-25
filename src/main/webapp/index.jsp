@@ -2,12 +2,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Login_index</title>
+    <style>
+        #form{
+            width: 500px;
+            /*border: 1px red solid;*/
+            margin: 100px auto 0px;
+        }
+        table{
+            margin: 10px auto;
+        }
+        .info{
+            /*border: 1px red solid;*/
+            width: 500px;
+            color: red;
+            text-align: center;
+            margin: 2px auto;
+        }
+    </style>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
+    <div id="form">
+        <form action="/demo/login" method="post">
+            <table>
+                <tr>
+                    <td>用户名</td>
+                    <td><input type="text" name="username"></td>
+                </tr>
+                <tr>
+                    <td>密码</td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+                <tr>
+                    <td>验证码</td>
+                    <td><input type="text" name="checkCode"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><img src="/demo/check" id="image"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="登录"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="info"><%=request.getAttribute("error") == null ? "" :request.getAttribute("error") %></div>
+    <div class="info"><%=request.getAttribute("login_error") == null ? "" :request.getAttribute("login_error") %></div>
+
 <br/>
 <a href="./downLoad.html">Hello Servlet</a>
 </body>
+
+<script>
+    window.onload = function (){
+        document.getElementById("image").onclick = function () {
+            this.src = "/demo/check?time=" + new Date().getTime();
+        }
+    }
+</script>
 </html>

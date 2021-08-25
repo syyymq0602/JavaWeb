@@ -28,9 +28,7 @@ public class LoginServlet extends HttpServlet {
         User LoginUser = new User();
         try {
             BeanUtils.populate(LoginUser,map);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
 
