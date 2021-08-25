@@ -47,7 +47,7 @@ public class LoginCheckCodeServlet extends HttpServlet {
             } else {
                 session.setAttribute("user", user.getUsername());
 
-                response.sendRedirect(request.getContextPath() + "/success.jsp");
+                response.sendRedirect(request.getContextPath() + "/JSP/success.jsp");
             }
         } else {
             // 验证码不一致或者没有传验证码

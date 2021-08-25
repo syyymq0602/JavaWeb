@@ -51,7 +51,7 @@
     <div class="info"><%=request.getAttribute("login_error") == null ? "" :request.getAttribute("login_error") %></div>
 
 <br/>
-<a href="./downLoad.html">Hello Servlet</a>
+<a href="HTML/downLoad.html">Hello Servlet</a>
 </body>
 
 <script>
