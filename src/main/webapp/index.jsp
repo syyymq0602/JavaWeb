@@ -51,9 +51,10 @@
     <div class="info"><%=request.getAttribute("login_error") == null ? "" :request.getAttribute("login_error") %></div>
 
 <br/>
-<a href="HTML/downLoad.html">Hello Servlet</a>
-<a href="JSP/el_jstl.jsp">EL+JSTL案例</a>
-<a href="Case/indexDemo.jsp">案例跳转入口</a>
+<a href="HTML/downLoad.html">Hello Servlet</a><br/>
+<a href="JSP/el_jstl.jsp">EL+JSTL案例</a><br/>
+<a href="Case/indexDemo.jsp">案例跳转入口</a><br/>
+<a href="Case/login.jsp">登录界面入口</a><br/>
 </body>
 
 <script>
