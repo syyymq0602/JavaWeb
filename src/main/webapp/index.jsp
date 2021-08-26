@@ -23,7 +23,7 @@
 </head>
 <body>
     <div id="form">
-        <form action="/demo/login" method="post">
+        <form action="${pageContext.request.contextPath}/login" method="post">
             <table>
                 <tr>
                     <td>用户名</td>
@@ -52,6 +52,8 @@
 
 <br/>
 <a href="HTML/downLoad.html">Hello Servlet</a>
+<a href="JSP/el_jstl.jsp">EL+JSTL案例</a>
+<a href="Case/indexDemo.jsp">案例跳转入口</a>
 </body>
 
 <script>
