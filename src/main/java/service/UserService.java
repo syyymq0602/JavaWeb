@@ -13,4 +13,11 @@ public interface UserService {
      * @return
      */
     public List<User> findAll();
+
+    /**
+     * 获取正确登录的用户
+     * @param user
+     * @return 成功登录的用户
+     */
+    public User login(User user);
 }

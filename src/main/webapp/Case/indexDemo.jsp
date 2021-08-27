@@ -12,10 +12,33 @@
     <script src="js/jquery-2.1.0.min.js"></script>
     <!-- 3. 导入bootstrap的js文件 -->
     <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/toastr.min.css">
+    <script src="./js/toastr.min.js"></script>
     <script type="text/javascript">
+        window.onload = function (){
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-bottom-center",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "800",
+                "timeOut": "3000",
+                "extendedTimeOut": "300",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            toastr["success"]("登录成功")
+        }
     </script>
 </head>
 <body>
+<div>${user.name}，欢迎你！</div>
 <div class="text-center">
     <a
         href="${pageContext.request.contextPath}/userListServlet" style="text-decoration:none;font-size:33px">查询所有用户信息
