@@ -18,14 +18,26 @@
     <script src="js/jquery-2.1.0.min.js"></script>
     <!-- 3. 导入bootstrap的js文件 -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="./js/add.js"></script>
+    <style>
+        h3{
+            text-align: center;
+        }
+        .error{
+            font-size: 15px;
+            color: red;
+            vertical-align: middle;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
-    <center><h3>添加联系人页面</h3></center>
+    <h3>添加联系人页面</h3>
     <form action="${pageContext.request.contextPath}/addUserServlet" method="post">
         <div class="form-group">
             <label for="name">姓名：</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="请输入姓名">
+            <span id="span_name" class="error"></span>
         </div>
 
         <div class="form-group">
@@ -37,6 +49,7 @@
         <div class="form-group">
             <label for="age">年龄：</label>
             <input type="text" class="form-control" id="age" name="age" placeholder="请输入年龄">
+            <span id="span_age" class="error"></span>
         </div>
 
         <div class="form-group">
@@ -56,16 +69,18 @@
         <div class="form-group">
             <label for="qq">QQ：</label>
             <input type="text" class="form-control" id="qq" name="qq" placeholder="请输入QQ号码"/>
+            <span id="span_qq" class="error"></span>
         </div>
 
         <div class="form-group">
             <label for="email">Email：</label>
             <input type="text" class="form-control" id="email" name="email" placeholder="请输入邮箱地址"/>
+            <span id="span_email" class="error"></span>
         </div>
 
         <div class="form-group" style="text-align: center">
-            <input class="btn btn-primary" type="submit" value="提交" />
-            <input class="btn btn-default" type="reset" value="重置" />
+            <input class="btn btn-primary" type="submit" disabled="disabled" id="btn_submit" value="提交"/>
+            <input class="btn btn-default" type="reset" id="btn_reset" value="重置" />
             <input class="btn btn-default" type="button" value="返回" />
         </div>
     </form>
