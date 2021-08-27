@@ -13,4 +13,10 @@ public interface UserDao {
     public User findUserByUsernameAndPassword(String username,String password);
 
     void addUser(User user);
+
+    /**
+     * 数据库删除操作
+     * @param id
+     */
+    void delete(int id);
 }

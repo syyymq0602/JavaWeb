@@ -19,6 +19,46 @@
     <script src="js/jquery-2.1.0.min.js"></script>
     <!-- 3. 导入bootstrap的js文件 -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="./js/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="./css/sweetalert2.min.css">
+    <script type="text/javascript">
+        function skip(id){
+            window.location.href = "${pageContext.request.contextPath}/delUserServlet?id=" + id;
+        }
+
+        function tip(id){
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: '确定要删除吗?',
+                text: "Are you sure to delete it?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '确认删除',
+                cancelButtonText: '手滑',
+                reverseButtons: true,
+                width:'400px',
+                padding:'3em'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire(
+                        '已删除',
+                        'The user information has been deleted.',
+                        'success'
+                    )
+                    window.setTimeout(function () {
+                        skip(id);
+                    },2000)
+                }
+            })
+        }
+    </script>
     <style type="text/css">
         td, th {
             text-align: center;
@@ -71,7 +111,8 @@
                 <td>${user.address}</td>
                 <td>${user.qq}</td>
                 <td>${user.email}</td>
-                <td><a class="btn btn-default btn-sm" href="update.html">修改</a>&nbsp;<a class="btn btn-default btn-sm" href="">删除</a></td>
+                <td><a class="btn btn-default btn-sm" href="update.html">修改</a>&nbsp;
+                    <a class="btn btn-default btn-sm" onclick="tip(${user.id})">删除</a></td>
             </tr>
         </c:forEach>
     </table>

@@ -19,11 +19,49 @@
     <script src="js/jquery-2.1.0.min.js"></script>
     <!-- 3. 导入bootstrap的js文件 -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="./js/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="./css/sweetalert2.min.css">
     <style type="text/css">
         td, th {
             text-align: center;
         }
     </style>
+    <script type="text/javascript">
+        function skip(){
+            window.location.href = "https://www.baidu.com";
+        }
+
+        function tip(){
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: '确定要删除吗?',
+                text: "Are you sure to delete it?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '确认删除',
+                cancelButtonText: '手滑',
+                reverseButtons: true,
+                width:'400px',
+                padding:'3em'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire(
+                        '已删除',
+                        'The user information has been deleted.',
+                        'success'
+                    );
+                    setTimeout(skip,2000)
+                }
+            })
+        }
+    </script>
 </head>
 <body>
 <div class="container">
@@ -47,7 +85,8 @@
             <td>广东</td>
             <td>44444222</td>
             <td>zs@qq.com</td>
-            <td><a class="btn btn-default btn-sm" href="update.html">修改</a>&nbsp;<a class="btn btn-default btn-sm" href="">删除</a></td>
+            <td><a class="btn btn-default btn-sm" href="update.html">修改</a>&nbsp;
+                <a class="btn btn-default btn-sm" onclick="tip()">删除</a></td>
         </tr>
         <tr>
             <td>2</td>

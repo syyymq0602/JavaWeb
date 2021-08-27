@@ -26,4 +26,10 @@ public interface UserService {
      * @param user
      */
     void addUser(User user);
+
+    /**
+     * 根据id删除对应数据
+     * @param id
+     */
+    void deleteUser(String id);
 }
