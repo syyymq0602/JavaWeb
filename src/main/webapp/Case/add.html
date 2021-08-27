@@ -32,14 +32,20 @@
 
         <div class="form-group">
             <label>性别：</label>
-            <input type="radio" name="sex" value="男" checked="checked"/>男
-            <input type="radio" name="sex" value="女"/>女
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="male" checked="checked"/> 男
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="female"/> 女
+            </label>
         </div>
 
         <div class="form-group">
             <label for="age">年龄：</label>
             <input type="text" class="form-control" id="age" name="age" placeholder="请输入年龄">
         </div>
+
+
 
         <div class="form-group">
             <label for="address">籍贯：</label>

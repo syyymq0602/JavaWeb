@@ -19,6 +19,7 @@
     <!-- 3. 导入bootstrap的js文件 -->
     <script src="js/bootstrap.min.js"></script>
     <script src="./js/add.js"></script>
+    <script type="text/javascript"></script>
     <style>
         h3{
             text-align: center;
@@ -42,8 +43,12 @@
 
         <div class="form-group">
             <label>性别：</label>
-            <input type="radio" name="gender" value="male" checked="checked"/>男
-            <input type="radio" name="gender" value="female"/>女
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="male" checked="checked"/> 男
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="female"/> 女
+            </label>
         </div>
 
         <div class="form-group">
@@ -81,7 +86,7 @@
         <div class="form-group" style="text-align: center">
             <input class="btn btn-primary" type="submit" disabled="disabled" id="btn_submit" value="提交"/>
             <input class="btn btn-default" type="reset" id="btn_reset" value="重置" />
-            <input class="btn btn-default" type="button" value="返回" />
+            <input class="btn btn-default" type="button" id="btn_back" value="返回" />
         </div>
     </form>
 </div>
