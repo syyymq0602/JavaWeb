@@ -20,4 +20,10 @@ public interface UserService {
      * @return 成功登录的用户
      */
     public User login(User user);
+
+    /**
+     * 保存新的User
+     * @param user
+     */
+    void addUser(User user);
 }
