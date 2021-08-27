@@ -19,4 +19,17 @@ public interface UserDao {
      * @param id
      */
     void delete(int id);
+
+    /**
+     * 根据id查找对应user
+     * @param id
+     * @return
+     */
+    User findById(int id);
+
+    /**
+     * 更新用户信息
+     * @param user
+     */
+    void update(User user);
 }

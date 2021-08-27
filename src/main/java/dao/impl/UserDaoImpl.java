@@ -22,14 +22,14 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User findUserByUsernameAndPassword(String username, String password) {
-        try{
+        try {
             String sql = "select * from user where username = ? and password = ?";
             User user = template.queryForObject(sql,
                     new BeanPropertyRowMapper<User>(User.class),
                     username,
                     password);
             return user;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -39,13 +39,27 @@ public class UserDaoImpl implements UserDao {
     public void addUser(User user) {
         String sql = "insert into user values(null,?,?,?,?,?,?,null,null)";
 
-        template.update(sql,user.getName(),user.getGender(),user.getAge(),
-                user.getAddress(),user.getQq(),user.getEmail());
+        template.update(sql, user.getName(), user.getGender(), user.getAge(),
+                user.getAddress(), user.getQq(), user.getEmail());
     }
 
     @Override
     public void delete(int id) {
         String sql = "delete from user where id = ?";
-        template.update(sql,id);
+        template.update(sql, id);
+    }
+
+    @Override
+    public User findById(int id) {
+        String sql = "select * from user where id = ?";
+        return template.queryForObject(sql,
+                new BeanPropertyRowMapper<User>(User.class), id);
+    }
+
+    @Override
+    public void update(User user) {
+        String sql = "update user set name = ?,gender = ?,age = ?,address = ?,qq = ?,email = ? where id = ?";
+        template.update(sql,user.getName(),user.getGender(),user.getAge(),
+                user.getAddress(),user.getQq(),user.getEmail(),user.getId());
     }
 }
