@@ -32,4 +32,18 @@ public interface UserDao {
      * @param user
      */
     void update(User user);
+
+    /**
+     * 查询数据总记录数
+     * @return
+     */
+    int findTotalCount();
+
+    /**
+     * 查询每页的记录
+     * @param start
+     * @param rows
+     * @return
+     */
+    List<User> findByPage(int start, int rows);
 }

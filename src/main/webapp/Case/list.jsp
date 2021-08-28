@@ -203,7 +203,7 @@
                     </a>
                 </li>
                 <span style="font-size: 25px;margin-left:5px">
-                    共16条记录，共4页
+                    共${pd.totalCount}条记录，共${pd.totalPage}页
                 </span>
             </ul>
         </nav>
