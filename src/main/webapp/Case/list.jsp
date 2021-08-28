@@ -58,8 +58,14 @@
                 }
             })
         }
+
+        window.onload = function (){
+            document.getElementById("deleteSelected").onclick = function () {
+                document.getElementById("list_form").submit();
+            }
+        }
     </script>
-    <style type="text/css">
+    <style>
         td, th {
             text-align: center;
         }
@@ -87,35 +93,38 @@
     </div>
     <div style="float: right;margin: 5px">
         <a class="btn btn-primary" href="${pageContext.request.contextPath}/Case/add.jsp">添加联系人</a>
-        <a class="btn btn-primary" href="./add.html">删除选中</a>
+        <a class="btn btn-primary" id="deleteSelected">删除选中</a>
     </div>
-    <table border="1" class="table table-bordered table-hover">
-        <tr class="success">
-            <th><input type="checkbox" aria-label="Checkbox for following text input"></th>
-            <th>编号</th>
-            <th>姓名</th>
-            <th>性别</th>
-            <th>年龄</th>
-            <th>籍贯</th>
-            <th>QQ</th>
-            <th>邮箱</th>
-            <th>操作</th>
-        </tr>
-        <c:forEach items="${users}" var="user" varStatus="s">
-            <tr>
-                <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                <td>${s.count}</td>
-                <td>${user.name}</td>
-                <td>${user.gender}</td>
-                <td>${user.age}</td>
-                <td>${user.address}</td>
-                <td>${user.qq}</td>
-                <td>${user.email}</td>
-                <td><a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/findUserServlet?id=${user.id}">修改</a>&nbsp;
-                    <a class="btn btn-default btn-sm" onclick="tip(${user.id})">删除</a></td>
+    <form action="${pageContext.request.contextPath}/deleteSelectedServlet" method="post" id="list_form">
+        <table border="1" class="table table-bordered table-hover">
+            <tr class="success">
+                <th><input type="checkbox" aria-label="Checkbox for following text input"></th>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>籍贯</th>
+                <th>QQ</th>
+                <th>邮箱</th>
+                <th>操作</th>
             </tr>
-        </c:forEach>
-    </table>
+            <c:forEach items="${users}" var="user" varStatus="s">
+                <tr>
+                    <td><input type="checkbox" name="uid" value="${user.id}" aria-label="Checkbox for following text input"></td>
+                    <td>${s.count}</td>
+                    <td>${user.name}</td>
+                    <td>${user.gender}</td>
+                    <td>${user.age}</td>
+                    <td>${user.address}</td>
+                    <td>${user.qq}</td>
+                    <td>${user.email}</td>
+                    <td><a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/findUserServlet?id=${user.id}">修改</a>&nbsp;
+                        <a class="btn btn-default btn-sm" onclick="tip(${user.id})">删除</a></td>
+                </tr>
+            </c:forEach>
+        </table>
+    </form>
+
 
     <div>
         <nav aria-label="Page navigation">

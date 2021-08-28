@@ -45,4 +45,10 @@ public interface UserService {
      * @param user
      */
     void updateUser(User user);
+
+    /**
+     * 批量删除用户
+     * @param ids
+     */
+    void delSelectedUsers(String[] ids);
 }
