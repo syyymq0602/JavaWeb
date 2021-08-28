@@ -59,5 +59,5 @@ public interface UserService {
      * @param rows
      * @return
      */
-    PageBean<User> findUserByPage(int currentPage, int rows);
+    PageBean<User> findUserByPage(String currentPage, String rows);
 }

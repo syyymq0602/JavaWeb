@@ -52,7 +52,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageBean<User> findUserByPage(int currentPage, int rows) {
+    public PageBean<User> findUserByPage(String _currentPage, String _rows) {
+        int rows = Integer.parseInt(_rows);
+        int currentPage = Integer.parseInt(_currentPage);
         PageBean<User> pb = new PageBean<User>();
         pb.setCurrentPage(currentPage);
         pb.setRows(rows);

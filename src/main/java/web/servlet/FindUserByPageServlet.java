@@ -14,8 +14,15 @@ import java.io.IOException;
 public class FindUserByPageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int rows = Integer.parseInt(request.getParameter("rows"));
-        int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+        String rows = request.getParameter("rows");
+        String currentPage = request.getParameter("currentPage");
+
+        if(rows == null || "".equals(rows)){
+            rows = "5";
+        }
+        if(currentPage == null || "".equals(currentPage)){
+            currentPage = "1";
+        }
 
         UserService service = new UserServiceImpl();
         PageBean<User> pb = service.findUserByPage(currentPage,rows);
