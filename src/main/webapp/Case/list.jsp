@@ -63,6 +63,12 @@
             document.getElementById("deleteSelected").onclick = function () {
                 document.getElementById("list_form").submit();
             }
+            document.getElementById("firstCb").onclick = function (){
+                let cbs = document.getElementsByName("uid");
+                for (let i = 0; i < cbs.length; i++) {
+                    cbs[i].checked = this.checked;
+                }
+            }
         }
     </script>
     <style>
@@ -98,7 +104,7 @@
     <form action="${pageContext.request.contextPath}/deleteSelectedServlet" method="post" id="list_form">
         <table border="1" class="table table-bordered table-hover">
             <tr class="success">
-                <th><input type="checkbox" aria-label="Checkbox for following text input"></th>
+                <th><input type="checkbox" aria-label="Checkbox for following text input" id="firstCb"></th>
                 <th>编号</th>
                 <th>姓名</th>
                 <th>性别</th>
