@@ -11,7 +11,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/jquery-2.1.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="./js/update.js"></script>
+    <script src="js/updateUser.js"></script>
     <style>
         .error{
             font-size: 15px;
@@ -28,8 +28,8 @@
         <input type="hidden" name="id" value="${user.id}">
 
         <div class="form-group">
-            <label for="name">姓名：</label>
-            <input type="text" class="form-control" id="name" name="name" value="${user.name}" readonly="readonly" placeholder="请输入姓名" />
+            <label for="update_name">姓名：</label>
+            <input type="text" class="form-control" id="update_name" name="name" value="${user.name}" readonly="readonly" placeholder="请输入姓名" />
         </div>
 
         <div class="form-group">
@@ -53,9 +53,9 @@
         </div>
 
       <div class="form-group">
-          <label for="age">年龄：</label>
-          <input type="text" class="form-control" id="age" value="${user.age}" name="age" placeholder="请输入年龄" />
-          <span id="span_age" class="error"></span>
+          <label for="update_age">年龄：</label>
+          <input type="text" class="form-control" id="update_age" value="${user.age}" name="age" placeholder="请输入年龄" />
+          <span id="update_span_age" class="error"></span>
       </div>
 
       <div class="form-group">
@@ -73,23 +73,24 @@
       </div>
 
       <div class="form-group">
-          <label for="qq">QQ：</label>
-          <input type="text" id="qq" class="form-control" value="${user.qq}" name="qq" placeholder="请输入QQ号码"/>
-          <span id="span_qq" class="error"></span>
+          <label for="update_qq">QQ：</label>
+          <input type="text" id="update_qq" class="form-control" value="${user.qq}" name="qq" placeholder="请输入QQ号码"/>
+          <span id="update_span_qq" class="error"></span>
       </div>
 
       <div class="form-group">
-          <label for="email">Email：</label>
-          <input type="text" id="email" class="form-control" value="${user.email}" name="email" placeholder="请输入邮箱地址"/>
-          <span id="span_email" class="error"></span>
+          <label for="update_email">Email：</label>
+          <input type="text" id="update_email" class="form-control" value="${user.email}" name="email" placeholder="请输入邮箱地址"/>
+          <span id="update_span_email" class="error"></span>
       </div>
 
          <div class="form-group" style="text-align: center">
-            <input class="btn btn-primary" type="submit" disabled="disabled" id=btn_submit" value="提交" />
+            <input class="btn btn-primary" type="submit" id=btn_submit_update" value="提交" />
             <input class="btn btn-default" type="reset" value="重置" />
             <input class="btn btn-default" type="button" value="返回"/>
          </div>
     </form>
     </div>
 </body>
+
 </html>
