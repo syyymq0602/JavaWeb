@@ -22,19 +22,33 @@
     <script src="./js/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="./css/sweetalert2.min.css">
     <script type="text/javascript">
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        function del(){
+            let flag = false;
+            let cbs = document.getElementsByName("uid");
+            for (let i = 0; i < cbs.length; i++) {
+                if(cbs[i].checked){
+                    flag=true;
+                    break;
+                }
+            }
+            if(flag){
+                document.getElementById("list_form").submit();
+            }
+        }
+
         function skip(id){
             window.location.href = "${pageContext.request.contextPath}/delUserServlet?id=" + id;
         }
 
         function tip(id){
-            const swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                    confirmButton: 'btn btn-success',
-                    cancelButton: 'btn btn-danger'
-                },
-                buttonsStyling: false
-            })
-
             swalWithBootstrapButtons.fire({
                 title: '确定要删除吗?',
                 text: "Are you sure to delete it?",
@@ -43,8 +57,7 @@
                 confirmButtonText: '确认删除',
                 cancelButtonText: '手滑',
                 reverseButtons: true,
-                width:'400px',
-                padding:'3em'
+                width:'450px',
             }).then((result) => {
                 if (result.isConfirmed) {
                     swalWithBootstrapButtons.fire(
@@ -61,7 +74,43 @@
 
         window.onload = function (){
             document.getElementById("deleteSelected").onclick = function () {
-                document.getElementById("list_form").submit();
+                swalWithBootstrapButtons.fire({
+                    title: '确定要删除选中内容吗?',
+                    text: "Are you sure to delete them?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: '确认删除',
+                    cancelButtonText: '手滑',
+                    reverseButtons: true,
+                    width:'450px',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        let flag = false;
+                        let cbs = document.getElementsByName("uid");
+                        for (let i = 0; i < cbs.length; i++) {
+                            if(cbs[i].checked){
+                                flag=true;
+                                break;
+                            }
+                        }
+                        if(flag){
+                            swalWithBootstrapButtons.fire(
+                                '已删除',
+                                'The user information has been deleted.',
+                                'success'
+                            );
+                            window.setTimeout(function () {
+                                document.getElementById("list_form").submit();
+                            }, 2000)
+                        }else{
+                            swalWithBootstrapButtons.fire(
+                                '无效操作',
+                                'Invalid operation',
+                                'error'
+                            );
+                        }
+                    }
+                })
             }
             document.getElementById("firstCb").onclick = function (){
                 let cbs = document.getElementsByName("uid");
@@ -74,6 +123,9 @@
     <style>
         td, th {
             text-align: center;
+        }
+        html{
+            font-size: 16px;
         }
     </style>
 </head>

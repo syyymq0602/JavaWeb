@@ -8,7 +8,8 @@ import service.UserService;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    private UserDao dao= new UserDaoImpl();
+    private UserDao dao = new UserDaoImpl();
+
     @Override
     public List<User> findAll() {
         // 调用dao完成查询
@@ -17,7 +18,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User login(User loginUser) {
-        return dao.findUserByUsernameAndPassword(loginUser.getUsername(),loginUser.getPassword());
+        return dao.findUserByUsernameAndPassword(loginUser.getUsername(), loginUser.getPassword());
     }
 
     @Override
@@ -42,8 +43,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delSelectedUsers(String[] ids) {
-        for (String id : ids) {
-            dao.delete(Integer.parseInt(id));
+        if (ids != null && ids.length > 0) {
+            for (String id : ids) {
+                dao.delete(Integer.parseInt(id));
+            }
         }
     }
 }
