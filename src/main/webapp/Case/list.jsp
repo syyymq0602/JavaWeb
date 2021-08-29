@@ -194,7 +194,7 @@
                 </c:if>
                 <c:if test="${pb.currentPage != 1}">
                     <li>
-                        <a href="${pageContext.request.contextPath}/findUserByPageServlet?rows=5&currentPage=${pb.currentPage-1}" aria-label="Previous">
+                        <a href="${pageContext.request.contextPath}/findUserByPageServlet?rows=5&currentPage=${pb.currentPage-1}&name=${cond.name[0]}&address=${cond.address[0]}&email=${cond.email[0]}" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
@@ -202,10 +202,10 @@
 
                 <c:forEach begin="1" end="${pb.totalPage}" var="i">
                     <c:if test="${pb.currentPage == i}">
-                        <li class="active"><a href="${pageContext.request.contextPath}/findUserByPageServlet?rows=5&currentPage=${i}">${i}</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/findUserByPageServlet?rows=5&currentPage=${i}&name=${cond.name[0]}&address=${cond.address[0]}&email=${cond.email[0]}">${i}</a></li>
                     </c:if>
                     <c:if test="${pb.currentPage != i}">
-                        <li><a href="${pageContext.request.contextPath}/findUserByPageServlet?rows=5&currentPage=${i}">${i}</a></li>
+                        <li><a href="${pageContext.request.contextPath}/findUserByPageServlet?rows=5&currentPage=${i}&name=${cond.name[0]}&address=${cond.address[0]}&email=${cond.email[0]}">${i}</a></li>
                     </c:if>
                 </c:forEach>
 
@@ -216,7 +216,7 @@
                 </c:if>
                 <c:if test="${pb.currentPage != pb.totalPage}">
                     <li>
-                        <a href="${pageContext.request.contextPath}/findUserByPageServlet?rows=5&currentPage=${pb.currentPage+1}" aria-label="Next">
+                        <a href="${pageContext.request.contextPath}/findUserByPageServlet?rows=5&currentPage=${pb.currentPage+1}&name=${cond.name[0]}&address=${cond.address[0]}&email=${cond.email[0]}" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
