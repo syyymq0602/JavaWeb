@@ -12,13 +12,6 @@
     <script src="js/jquery-2.1.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/updateUser.js"></script>
-    <script>
-        window.onload = function () {
-            document.getElementById("btn_back_update").onclick = function () {
-                window.location.href = "${pageContext.request.contextPath}/findUserByPageServlet";
-            }
-        }
-    </script>
     <style>
         .error{
             font-size: 15px;
@@ -92,9 +85,9 @@
       </div>
 
          <div class="form-group" style="text-align: center">
-            <input class="btn btn-primary" type="submit" id=btn_submit_update" value="提交" />
+            <input class="btn btn-primary" type="submit" id="btn_submit_update" value="提交" />
             <input class="btn btn-default" type="reset" value="重置" />
-            <input class="btn btn-default" type="button" id="btn_back_update" value="返回"/>
+            <input class="btn btn-default" type="button" id="btn_back_update" onclick='window.location.href = "${pageContext.request.contextPath}/findUserByPageServlet"' value="返回"/>
          </div>
     </form>
     </div>

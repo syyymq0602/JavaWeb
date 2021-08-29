@@ -1,6 +1,7 @@
 
 window.onload = function () {
     let button = document.getElementById("btn_submit_update")
+    console.log(button)
     document.getElementById("update_age").onblur = function () {
         if(!checkUpdateAge()){
             document.getElementById("update_span_age").innerHTML = "输入年龄格式有误";
