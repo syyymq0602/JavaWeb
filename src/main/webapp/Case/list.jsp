@@ -133,18 +133,18 @@
 <div class="container">
     <h3 style="text-align: center">用户信息列表</h3>
     <div style="float:left">
-        <form class="form-inline" style="margin: 2px">
+        <form class="form-inline" style="margin: 2px" action="${pageContext.request.contextPath}/findUserByPageServlet" method="post">
             <div class="form-group">
                 <label for="exampleInputName1">姓名</label>
-                <input type="text" class="form-control" id="exampleInputName1">
+                <input type="text" name="name" class="form-control" id="exampleInputName1">
             </div>
             <div class="form-group">
                 <label for="exampleInputName2">籍贯</label>
-                <input type="text" class="form-control" id="exampleInputName2">
+                <input type="text" name="address" class="form-control" id="exampleInputName2">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail2">邮箱</label>
-                <input type="email" class="form-control" id="exampleInputEmail2">
+                <input type="email" name="email" class="form-control" id="exampleInputEmail2">
             </div>
             <button type="submit" class="btn btn-default">查询</button>
         </form>

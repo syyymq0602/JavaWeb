@@ -6,7 +6,10 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import util.JDBCUtil;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class UserDaoImpl implements UserDao {
     private JdbcTemplate template = new JdbcTemplate(JDBCUtil.getDataSource());
@@ -59,19 +62,33 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void update(User user) {
         String sql = "update user set name = ?,gender = ?,age = ?,address = ?,qq = ?,email = ? where id = ?";
-        template.update(sql,user.getName(),user.getGender(),user.getAge(),
-                user.getAddress(),user.getQq(),user.getEmail(),user.getId());
+        template.update(sql, user.getName(), user.getGender(), user.getAge(),
+                user.getAddress(), user.getQq(), user.getEmail(), user.getId());
     }
 
     @Override
-    public int findTotalCount() {
-        String sql = "select count(*) from user";
-        return template.queryForObject(sql,Integer.class);
+    public int findTotalCount(Map<String, String[]> conditions) {
+        String sql = "select count(*) from user where 1 = 1 ";
+        StringBuilder sb = new StringBuilder(sql);
+        Set<String> keySets = conditions.keySet();
+        List<Object> list = new ArrayList<>();
+        for (String keySet : keySets) {
+            if ("currentPage".equals(keySet) || "rows".equals(keySet)) {
+                continue;
+            }
+            String value = conditions.get(keySet)[0];
+            if (value != null && !"".equals(value)) {
+                sb.append(" and " + keySet + " like ? ");
+                list.add("%" + value + "%");
+            }
+        }
+
+        return template.queryForObject(sb.toString(), Integer.class, list.toArray());
     }
 
     @Override
-    public List<User> findByPage(int start, int rows) {
+    public List<User> findByPage(int start, int rows, Map<String, String[]> conditions) {
         String sql = "select * from user limit ? , ?";
-        return template.query(sql,new BeanPropertyRowMapper<User>(User.class),start,rows);
+        return template.query(sql, new BeanPropertyRowMapper<User>(User.class), start, rows);
     }
 }

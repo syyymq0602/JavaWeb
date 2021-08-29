@@ -9,6 +9,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.Map;
 
 @WebServlet(name = "FindUserByPageServlet", value = "/findUserByPageServlet")
 public class FindUserByPageServlet extends HttpServlet {
@@ -23,9 +24,11 @@ public class FindUserByPageServlet extends HttpServlet {
         if(currentPage == null || "".equals(currentPage)){
             currentPage = "1";
         }
+        // 条件查询参数
+        Map<String, String[]> conditions = request.getParameterMap();
 
         UserService service = new UserServiceImpl();
-        PageBean<User> pb = service.findUserByPage(currentPage,rows);
+        PageBean<User> pb = service.findUserByPage(currentPage,rows,conditions);
 
         request.setAttribute("pb",pb);
         request.getRequestDispatcher("/Case/list.jsp").forward(request,response);

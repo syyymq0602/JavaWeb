@@ -7,6 +7,7 @@ import domain.User;
 import service.UserService;
 
 import java.util.List;
+import java.util.Map;
 
 public class UserServiceImpl implements UserService {
     private UserDao dao = new UserDaoImpl();
@@ -52,17 +53,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageBean<User> findUserByPage(String _currentPage, String _rows) {
+    public PageBean<User> findUserByPage(String _currentPage, String _rows, Map<String, String[]> conditions) {
         int rows = Integer.parseInt(_rows);
         int currentPage = Integer.parseInt(_currentPage);
         PageBean<User> pb = new PageBean<User>();
         pb.setCurrentPage(currentPage);
         pb.setRows(rows);
 
-        int totalCount = dao.findTotalCount();
+        int totalCount = dao.findTotalCount(conditions);
         pb.setTotalCount(totalCount);
         int start = (currentPage - 1) * rows;
-        List<User> list = dao.findByPage(start, rows);
+        List<User> list = dao.findByPage(start, rows,conditions);
         pb.setList(list);
 
         int totalPage = totalCount % rows == 0 ? totalCount / rows : totalCount / rows + 1;
