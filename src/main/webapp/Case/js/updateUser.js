@@ -38,7 +38,6 @@ window.onload = function () {
 
 
 
-
 // 更新页面的年龄检测
 function checkUpdateAge(){
     let age = document.getElementById("update_age").value;

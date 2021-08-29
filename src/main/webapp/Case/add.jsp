@@ -19,7 +19,13 @@
     <!-- 3. 导入bootstrap的js文件 -->
     <script src="js/bootstrap.min.js"></script>
     <script src="./js/add.js"></script>
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById("btn_back").onclick = function () {
+                window.location.href = "${pageContext.request.contextPath}/findUserByPageServlet";
+            }
+        }
+    </script>
     <style>
         h3{
             text-align: center;
