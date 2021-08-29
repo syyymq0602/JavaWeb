@@ -136,15 +136,15 @@
         <form class="form-inline" style="margin: 2px" action="${pageContext.request.contextPath}/findUserByPageServlet" method="post">
             <div class="form-group">
                 <label for="exampleInputName1">姓名</label>
-                <input type="text" name="name" class="form-control" id="exampleInputName1">
+                <input type="text" name="name" class="form-control" value="${cond.name[0]}" id="exampleInputName1">
             </div>
             <div class="form-group">
                 <label for="exampleInputName2">籍贯</label>
-                <input type="text" name="address" class="form-control" id="exampleInputName2">
+                <input type="text" name="address" class="form-control" value="${cond.address[0]}" id="exampleInputName2">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail2">邮箱</label>
-                <input type="email" name="email" class="form-control" id="exampleInputEmail2">
+                <input type="text" name="email" class="form-control" value="${cond.email[0]}" id="exampleInputEmail2">
             </div>
             <button type="submit" class="btn btn-default">查询</button>
         </form>

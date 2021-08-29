@@ -88,7 +88,25 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> findByPage(int start, int rows, Map<String, String[]> conditions) {
-        String sql = "select * from user limit ? , ?";
-        return template.query(sql, new BeanPropertyRowMapper<User>(User.class), start, rows);
+        String sql = "select * from user where 1 = 1 ";
+
+        StringBuilder sb = new StringBuilder(sql);
+        Set<String> keySets = conditions.keySet();
+        List<Object> list = new ArrayList<>();
+        for (String keySet : keySets) {
+            if ("currentPage".equals(keySet) || "rows".equals(keySet)) {
+                continue;
+            }
+            String value = conditions.get(keySet)[0];
+            if (value != null && !"".equals(value)) {
+                sb.append(" and " + keySet + " like ? ");
+                list.add("%" + value + "%");
+            }
+        }
+        sb.append(" limit ?,?");
+        list.add(start);
+        list.add(rows);
+
+        return template.query(sb.toString(), new BeanPropertyRowMapper<User>(User.class), list.toArray());
     }
 }

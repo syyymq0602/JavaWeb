@@ -31,6 +31,7 @@ public class FindUserByPageServlet extends HttpServlet {
         PageBean<User> pb = service.findUserByPage(currentPage,rows,conditions);
 
         request.setAttribute("pb",pb);
+        request.setAttribute("cond",conditions);
         request.getRequestDispatcher("/Case/list.jsp").forward(request,response);
 
     }
