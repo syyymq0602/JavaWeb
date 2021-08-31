@@ -15,7 +15,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
         function refreshCode() {
-            let code = document.getElementById("vocde");
+            let code = document.getElementById("vcode");
             code.src = "${pageContext.request.contextPath}/checkCodeServlet?time=" + new Date().getTime();
         }
     </script>
@@ -54,7 +54,7 @@
             <button type="button" class="close" data-dismiss="alert">
                 <span>&times;</span>
             </button>
-            <strong onload="successInfo()">${requestScope.login_fail}</strong>
+            <strong>${requestScope.login_fail}</strong>
         </div>
     </c:if>
 

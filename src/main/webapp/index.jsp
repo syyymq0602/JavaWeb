@@ -38,7 +38,7 @@
                     <td><input type="text" name="checkCode"></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><img src="/demo/check" id="image"></td>
+                    <td colspan="2"><img src="${pageContext.request.contextPath}/check" id="image"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="登录"></td>
