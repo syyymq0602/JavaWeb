@@ -12,6 +12,11 @@
         <servlet-name>demo1</servlet-name>
         <url-pattern>/demo1</url-pattern>
     </servlet-mapping>
+    
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/application.xml</param-value>
+    </context-param>
 
     <servlet>
         <servlet-name>book</servlet-name>
