@@ -17,10 +17,11 @@ public class FindCityServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         CityService service = new CityServiceImpl();
-        List<City> cities = service.findAll();
-        // 使用json序列化数据
-        ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(cities);
+//        List<City> cities = service.findAll();
+//        // 使用json序列化数据
+//        ObjectMapper mapper = new ObjectMapper();
+//        String json = mapper.writeValueAsString(cities);
+        String json = service.findAllJson();
         // 响应结果
         response.setContentType("application/json;charset=utf-8");
         response.getWriter().write(json);
