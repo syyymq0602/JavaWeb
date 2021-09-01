@@ -5,8 +5,8 @@ import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-
-@WebFilter(value = "/*")
+// 为了后续代码学习先将拦截器停掉
+@WebFilter(value = "/ooo")
 public class LoginFilter implements Filter {
     public void init(FilterConfig config) throws ServletException {
     }

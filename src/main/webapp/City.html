@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>City</title>
+    <script type="text/javascript" src="Case/js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function (){
+            // 发送ajax请求，加载所有城市
+            $.get("findCityServlet",{},function (data) {
+                let city = $("#city");
+                $(data).each(function () {
+                    let option = "<option name='"+this.id+"'>"+this.name+"</option>";
+                    city.append(option);
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <select id="city">
+        <option>----请选择省份----</option>
+    </select>
+</body>
+</html>
